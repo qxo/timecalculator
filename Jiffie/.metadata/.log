@@ -1,0 +1,39 @@
+!SESSION 2015-01-27 21:31:58.612 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:35:13.188
+!MESSAGE System property http.proxyHost is not set but should be 172.27.171.92.
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:35:13.208
+!MESSAGE System property http.proxyPort is not set but should be 8080.
+!SESSION 2015-01-27 21:36:32.834 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -data D:\jiffie -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:36:36.837
+!MESSAGE System property http.proxyHost is not set but should be 172.27.171.92.
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:36:36.842
+!MESSAGE System property http.proxyPort is not set but should be 8080.
+!SESSION 2015-01-27 21:53:35.617 -----------------------------------------------
+eclipse.buildId=4.3.0.M20130911-1000
+java.version=1.7.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.standard.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.standard.product
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:53:47.412
+!MESSAGE System property http.proxyHost is not set but should be 172.27.171.92.
+
+!ENTRY org.eclipse.core.net 1 0 2015-01-27 21:53:47.419
+!MESSAGE System property http.proxyPort is not set but should be 8080.

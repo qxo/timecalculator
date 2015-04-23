@@ -7,6 +7,17 @@ public class DailyTime {
 	private Date date;
 	private long inTimeInSeconds;
 	
+	public DailyTime(Date date, long inTimeInSeconds) {
+		super();
+		this.date = date;
+		this.inTimeInSeconds = inTimeInSeconds;
+		System.out.println(this.toString());
+	}
+	@Override
+	public String toString() {
+		return "DailyTime [date=" + date + ", inTimeInSeconds="
+				+ inTimeInSeconds + "]";
+	}
 	public Date getDate() {
 		return date;
 	}

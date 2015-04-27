@@ -123,55 +123,61 @@ public class TimeParser {
 				e.printStackTrace();
 			}
 			
+			
+			
 			for (int i=0; i<tableList.size();i++)
 			{
 				if(((IHTMLTable)tableList.get(i)).getInnerHtml().contains("10557"))
 				{
-	//				System.out.println(((IHTMLTable)tableList.get(i)).getInnerHtml());
+					System.out.println(((IHTMLTable)tableList.get(i)));
 					swipeTable = (IHTMLTable)tableList.get(i);
 				}
 			}
 			
-			try {
-				for (int i=0; i<swipeTable.getRows().size();i++)
-					{
-						if(swipeTable.getRow(i).getInnerHtml().contains("10557"))
-						{
-							Date time = format.parse (swipeTable.getRow(i).getCell(dateColumn - 1).getInnerText() + " " + swipeTable.getRow(i).getCell(timeColumn - 1).getInnerText());
-							if(swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[0]) || 
-							   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[1])	||
-							   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[2]) ||
-							   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[3]))
-							{
-								directionTime.add(new ParsedTimeData(swipeTable.getRow(i).getCell(directionColumn - 1).getInnerText(), time));
-								System.out.println(swipeTable.getRow(i).getCell(directionColumn - 1).getInnerText() + " - " + swipeTable.getRow(i).getCell(timeColumn - 1).getInnerText() + "date = " + time.getTime()/1000);
-							}
-						}
-					}
-				System.out.println(new Date().getTime()/1000);
-			} catch (JiffieException e) {
-				System.out.println("Exception while getting rows from swipetable in TimeParser.DayTimeParser");
-				e.printStackTrace();
-			} catch (ParseException e) {
-				System.out.println("Exception while parsing the date and time in TimeParser.DayTimeParser");
-				e.printStackTrace();
-			}		
-			pageCount++;
-			if(currentDate == null)
+			if (swipeTable != null)
 			{
 				try {
-					System.out.println("Format " + swipeTable.getRow(2).getCell(dateColumn - 1).getInnerText());
-					currentDate = format.parse (swipeTable.getRow(2).getCell(dateColumn - 1).getInnerText() + " 00:00:00 AM");
-				} catch (ParseException e) {
-					System.out.println("Error Parsing Current Date in TimeParser.DayTimeParser()");
+					for (int i=0; i<swipeTable.getRows().size();i++)
+						{
+							if(swipeTable.getRow(i).getInnerHtml().contains("10557"))
+							{
+								Date time = format.parse (swipeTable.getRow(i).getCell(dateColumn - 1).getInnerText() + " " + swipeTable.getRow(i).getCell(timeColumn - 1).getInnerText());
+								if(swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[0]) || 
+								   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[1])	||
+								   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[2]) ||
+								   swipeTable.getRow(i).getCell(machineColumn - 1).getInnerText().contains(BOUNDS_ARRAY[3]))
+								{
+									directionTime.add(new ParsedTimeData(swipeTable.getRow(i).getCell(directionColumn - 1).getInnerText(), time));
+									System.out.println(swipeTable.getRow(i).getCell(directionColumn - 1).getInnerText() + " - " + swipeTable.getRow(i).getCell(timeColumn - 1).getInnerText() + "date = " + time.getTime()/1000);
+								}
+							}
+						}
+					System.out.println(new Date().getTime()/1000);
+				} catch (JiffieException e) {
+					System.out.println("Exception while getting rows from swipetable in TimeParser.DayTimeParser");
 					e.printStackTrace();
+				} catch (ParseException e) {
+					System.out.println("Exception while parsing the date and time in TimeParser.DayTimeParser");
+					e.printStackTrace();
+				}		
+				pageCount++;
+				if(currentDate == null)
+				{
+					try {
+						System.out.println("Format " + swipeTable.getRow(2).getCell(dateColumn - 1).getInnerText());
+						currentDate = format.parse (swipeTable.getRow(2).getCell(dateColumn - 1).getInnerText() + " 00:00:00 AM");
+					} catch (ParseException e) {
+						System.out.println("Error Parsing Current Date in TimeParser.DayTimeParser()");
+						e.printStackTrace();
+					}
 				}
+				totalTimeInSeconds = inTimeCalculator(directionTime,currentDate);
+			}
+			else 
+			{
+				totalTimeInSeconds = -1;
 			}
 		}
-		
-		
-//		System.out.println(currentDate);
-		totalTimeInSeconds = inTimeCalculator(directionTime,currentDate);
 		return totalTimeInSeconds;
 	}
 	
